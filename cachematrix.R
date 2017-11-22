@@ -1,6 +1,3 @@
-## Put comments here that give an overall description of what your
-## functions do
-
 ## 20171122 1219 DWB From what I am understading this first function will "set-up"
 ## the functions to do the caching and will the inversion initally. I gather this from the
 ## forum topic on demystifing the vector mean examples. See examples given in the afore
@@ -51,6 +48,16 @@ makeCacheMatrix <- function(x = matrix()) {
 #
 
 cacheSolve <- function(x, ...) {
-  
-  
+  ##this has not been test, what so ever
+  ##just getting this out here to pass to
+  ##be able to work with @ home
+  m_cache <- x$getInverse()
+  if(!is.null(m_cache)){
+    message("getting cached data")
+    return(m_cache)
+  }
+  data <- x$get()
+  m_cache <- solve(data, ...)
+  x$setInverse(m_cache)
+  m_cache
 }
